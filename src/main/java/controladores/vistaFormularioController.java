@@ -1,7 +1,6 @@
 package controladores;
 
 import clases.Consultor;
-import clases.GestionConsultores;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +15,6 @@ import java.io.IOException;
 
 public class vistaFormularioController {
 
-    private GestionConsultores gestionConsultores = new GestionConsultores();
-
     @FXML
     private TextField apellidoMaterno;
 
@@ -30,7 +27,6 @@ public class vistaFormularioController {
     @FXML
     private TextField telefonoField;
 
-
     @FXML
     private TextField emailField;
 
@@ -40,40 +36,34 @@ public class vistaFormularioController {
     @FXML
     private TextField nombre;
 
-
-
     @FXML
     private PasswordField passwordField;
 
+    @FXML
+    void btnAgregar(ActionEvent event) {
+        String idConsultor = id.getText();
+        String nombreConsultor = nombre.getText();
+        String apellidoPaternoConsultor = apellidoPaterno.getText();
+        String apellidoMaternoConsultor = apellidoMaterno.getText();
+        String emailConsultor = emailField.getText();
+        String passwordConsultor = passwordField.getText();
+        String telefonoConsultor = telefonoField.getText();
+        String direccionConsultor = ""; // Aquí debes obtener la dirección del formulario
 
+        // Asegúrate de que los campos de contraseña coincidan
+        if (!passwordConsultor.equals(confirmPasswordField.getText())) {
+            System.out.println("Las contraseñas no coinciden");
+            return;
+        }
 
-@FXML
-void btnAgregar(ActionEvent event) {
-    String idConsultor = id.getText();
-    String nombreConsultor = nombre.getText();
-    String apellidoPaternoConsultor = apellidoPaterno.getText();
-    String apellidoMaternoConsultor = apellidoMaterno.getText();
-    String emailConsultor = emailField.getText();
-    String passwordConsultor = passwordField.getText();
-    String telefonoConsultor = telefonoField.getText();
-    String direccionConsultor = ""; // Aquí debes obtener la dirección del formulario
+        // Crea una nueva instancia de Consultor
+        Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
 
-    // Asegúrate de que los campos de contraseña coincidan
-    if (!passwordConsultor.equals(confirmPasswordField.getText())) {
-        System.out.println("Las contraseñas no coinciden");
-        return;
+        // Muestra todos los consultores
+        System.out.println(Consultor.getConsultores());
+
+        System.out.println("Consultor agregado");
     }
-
-    // Crea una nueva instancia de Consultor
-    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
-    // Agrega el nuevo consultor a gestionConsultores
-    gestionConsultores.agregarConsultor(nuevoConsultor);
-
-    // Muestra todos los consultores
-    System.out.println(gestionConsultores.verConsultores());
-
-    System.out.println("Consultor agregado");
-}
 
     @FXML
     void btnRegresar(ActionEvent event) {
@@ -88,5 +78,4 @@ void btnAgregar(ActionEvent event) {
             e.printStackTrace();
         }
     }
-
 }

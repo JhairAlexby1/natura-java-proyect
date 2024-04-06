@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.ArrayList;
+
 public class Consultor {
     private String id;
     private String nombre;
@@ -10,6 +12,9 @@ public class Consultor {
     private String email;
     private String password;
 
+    private static ArrayList<Consultor> consultores = new ArrayList<>();
+
+
     public Consultor(String id, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, String direccion, String email, String password) {
         this.id = id;
         this.nombre = nombre;
@@ -19,6 +24,12 @@ public class Consultor {
         this.direccion = direccion;
         this.email = email;
         this.password = password;
+        consultores.add(this);
+
+    }
+
+    public static ArrayList<Consultor> getConsultores() {
+        return consultores;
     }
 
     public String getId() {
