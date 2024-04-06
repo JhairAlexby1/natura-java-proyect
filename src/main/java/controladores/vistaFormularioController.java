@@ -28,6 +28,10 @@ public class vistaFormularioController {
     private PasswordField confirmPasswordField;
 
     @FXML
+    private TextField telefonoField;
+
+
+    @FXML
     private TextField emailField;
 
     @FXML
@@ -36,13 +40,14 @@ public class vistaFormularioController {
     @FXML
     private TextField nombre;
 
+
+
     @FXML
     private PasswordField passwordField;
 
 
 
-
-    @FXML
+@FXML
 void btnAgregar(ActionEvent event) {
     String idConsultor = id.getText();
     String nombreConsultor = nombre.getText();
@@ -50,6 +55,8 @@ void btnAgregar(ActionEvent event) {
     String apellidoMaternoConsultor = apellidoMaterno.getText();
     String emailConsultor = emailField.getText();
     String passwordConsultor = passwordField.getText();
+    String telefonoConsultor = telefonoField.getText();
+    String direccionConsultor = ""; // Aquí debes obtener la dirección del formulario
 
     // Asegúrate de que los campos de contraseña coincidan
     if (!passwordConsultor.equals(confirmPasswordField.getText())) {
@@ -58,13 +65,14 @@ void btnAgregar(ActionEvent event) {
     }
 
     // Crea una nueva instancia de Consultor
-    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, emailConsultor, passwordConsultor);
-
+    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
     // Agrega el nuevo consultor a gestionConsultores
     gestionConsultores.agregarConsultor(nuevoConsultor);
 
+    // Muestra todos los consultores
+    System.out.println(gestionConsultores.verConsultores());
 
-        System.out.println("Consultor agregado");
+    System.out.println("Consultor agregado");
 }
 
     @FXML

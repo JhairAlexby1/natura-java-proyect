@@ -27,6 +27,7 @@
         <TextField fx:id="apellidoPaterno" promptText="Apellido Paterno" />
         <TextField fx:id="apellidoMaterno" promptText="Apellido Materno" />
         <TextField fx:id="emailField" promptText="Correo" />
+        <TextField fx:id="telefonoField" promptText="Telefono" />
         <PasswordField fx:id="passwordField" promptText="Contrasena" />
         <PasswordField fx:id="confirmPasswordField" promptText="Confirmar Contrasena" />
 

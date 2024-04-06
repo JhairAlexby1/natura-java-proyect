@@ -1,5 +1,7 @@
 package controladores;
 
+import clases.Consultor;
+import clases.GestionConsultores;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +29,13 @@ public class vistaBuscarController {
     @FXML
     private TextField searchField;
 
+
+    private GestionConsultores gestionConsultores;
+
+    public vistaBuscarController() {
+        this.gestionConsultores = new GestionConsultores();
+    }
+
     @FXML
     void btnRegresar(ActionEvent event) {
         try {
@@ -43,9 +52,15 @@ public class vistaBuscarController {
         }
     }
 
-    @FXML
-    void buscarConsultor(ActionEvent event) {
-        System.out.println("Buscando consultor...");
+   @FXML
+void buscarConsultor(ActionEvent event) {
+    String id = searchField.getText();
+    Consultor consultor = gestionConsultores.buscarConsultorPorId(id);
+    if (consultor != null) {
+        resultsArea.setText(consultor.toString());
+    } else {
+        resultsArea.setText("No se encontró el consultor con el ID: " + id);
     }
+}
 
 }
