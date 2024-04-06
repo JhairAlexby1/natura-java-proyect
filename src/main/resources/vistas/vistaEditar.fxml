@@ -2,16 +2,10 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaEditarController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controladores.vistaEditarController">
    <children>
-      <Text layoutX="247.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reporte" textAlignment="CENTER">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Text>
-      <TableView fx:id="tablaRegistro" layoutX="63.0" layoutY="136.0" prefHeight="200.0" prefWidth="507.0">
+      <TableView fx:id="tablaRegistro" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="300.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
@@ -25,6 +19,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="regresar3" layoutX="515.0" layoutY="354.0" mnemonicParsing="false" onAction="#regresar" text="Regresar" />
+      <Button fx:id="btnRegresar" layoutX="20.0" layoutY="250.0" text="Regresar" />
    </children>
 </AnchorPane>
