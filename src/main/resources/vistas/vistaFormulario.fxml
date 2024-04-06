@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TextArea?>
 <StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaFormularioController">
     <VBox prefHeight="400.0" prefWidth="600.0" spacing="10">
         <stylesheets>
@@ -18,11 +19,13 @@
         <Label styleClass="title" text="Registro de consultor" />
 
         <HBox spacing="10">
-            <TextField fx:id="nombre" promptText="Nombre" />
-            <TextField fx:id="apeliidoPaterno" promptText="Apellido Paterno" />
-            <TextField fx:id="apeliidoMaterno" promptText="Apellido Materno" />
-        </HBox>
+    <TextField fx:id="id" promptText="ID" />
 
+
+</HBox>
+        <TextField fx:id="nombre" promptText="Nombre" />
+        <TextField fx:id="apellidoPaterno" promptText="Apellido Paterno" />
+        <TextField fx:id="apellidoMaterno" promptText="Apellido Materno" />
         <TextField fx:id="emailField" promptText="Correo" />
         <PasswordField fx:id="passwordField" promptText="Contrasena" />
         <PasswordField fx:id="confirmPasswordField" promptText="Confirmar Contrasena" />

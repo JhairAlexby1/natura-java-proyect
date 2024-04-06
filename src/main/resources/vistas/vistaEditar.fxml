@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controladores.vistaEditarController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <TableView fx:id="tableView" onMouseClicked="#handleTableClick">
+        <columns>
+            <TableColumn fx:id="nombreColumn" text="Nombre" />
+            <TableColumn fx:id="apellidoPaternoColumn" text="Apellido Paterno" />
+            <TableColumn fx:id="apellidoMaternoColumn" text="Apellido Materno" />
+            <TableColumn fx:id="telefonoColumn" text="Telefono" />
+            <TableColumn fx:id="direccionColumn" text="Direccion" />
+        </columns>
+    </TableView>
+
+</AnchorPane>

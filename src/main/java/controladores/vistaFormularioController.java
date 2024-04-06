@@ -1,5 +1,7 @@
 package controladores;
 
+import clases.Consultor;
+import clases.GestionConsultores;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +16,13 @@ import java.io.IOException;
 
 public class vistaFormularioController {
 
-    @FXML
-    private TextField apeliidoMaterno;
+    private GestionConsultores gestionConsultores = new GestionConsultores();
 
     @FXML
-    private TextField apeliidoPaterno;
+    private TextField apellidoMaterno;
+
+    @FXML
+    private TextField apellidoPaterno;
 
     @FXML
     private PasswordField confirmPasswordField;
@@ -27,29 +31,54 @@ public class vistaFormularioController {
     private TextField emailField;
 
     @FXML
+    private TextField id;
+
+    @FXML
     private TextField nombre;
 
     @FXML
     private PasswordField passwordField;
 
-    @FXML
-    void btnAgregar(ActionEvent event) {
-        System.out.println("agregado");
 
-    }
+
 
     @FXML
-void btnRegresar(ActionEvent event) {
-    try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/vistaPrincipal.fxml"));
-        Parent mainViewRoot = fxmlLoader.load();
+void btnAgregar(ActionEvent event) {
+    String idConsultor = id.getText();
+    String nombreConsultor = nombre.getText();
+    String apellidoPaternoConsultor = apellidoPaterno.getText();
+    String apellidoMaternoConsultor = apellidoMaterno.getText();
+    String emailConsultor = emailField.getText();
+    String passwordConsultor = passwordField.getText();
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(mainViewRoot, 600, 400));
-        stage.show();
-    } catch (IOException e) {
-        e.printStackTrace();
+    // Asegúrate de que los campos de contraseña coincidan
+    if (!passwordConsultor.equals(confirmPasswordField.getText())) {
+        System.out.println("Las contraseñas no coinciden");
+        return;
     }
+
+    // Crea una nueva instancia de Consultor
+    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, emailConsultor, passwordConsultor);
+
+    // Agrega el nuevo consultor a gestionConsultores
+    gestionConsultores.agregarConsultor(nuevoConsultor);
+
+
+        System.out.println("Consultor agregado");
 }
+
+    @FXML
+    void btnRegresar(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/vistaPrincipal.fxml"));
+            Parent mainViewRoot = fxmlLoader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(mainViewRoot, 600, 400));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

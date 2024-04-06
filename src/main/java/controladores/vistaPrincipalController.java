@@ -14,13 +14,10 @@ public class vistaPrincipalController {
     @FXML
     void btnAgregar(ActionEvent event) {
         try {
-            // Cargar el archivo FXML del formulario
             Parent formulario = FXMLLoader.load(getClass().getResource("/vistas/vistaFormulario.fxml"));
 
-            // Crear una nueva escena con el formulario cargado
             Scene sceneFormulario = new Scene(formulario);
 
-            // Obtener el escenario actual y establecer la nueva escena
             Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stageActual.setScene(sceneFormulario);
         } catch (IOException e) {
@@ -31,11 +28,9 @@ public class vistaPrincipalController {
     @FXML
 void btnBuscar(ActionEvent event) {
     try {
-        // Cargar el archivo FXML de la vista de búsqueda
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/vistaBuscar.fxml"));
         Parent buscarViewRoot = fxmlLoader.load();
 
-        // Obtener el escenario actual y establecer la nueva escena
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(buscarViewRoot, 600, 400));
         stage.show();
@@ -46,6 +41,15 @@ void btnBuscar(ActionEvent event) {
 
     @FXML
     void btnEditar(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/vistaEditar.fxml"));
+            Parent editarViewRoot = fxmlLoader.load();
 
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(editarViewRoot, 600, 400));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
     }
+}
 }
