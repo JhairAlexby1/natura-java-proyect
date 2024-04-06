@@ -28,7 +28,12 @@
         <PasswordField fx:id="confirmPasswordField" promptText="Confirmar Contrasena" />
 
         <HBox alignment="CENTER">
-            <Button fx:id="submitButton" styleClass="submit" text="Agregar" />
+            <Button onAction="#btnAgregar" styleClass="submit" text="Agregar" />
         </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Button onAction="#btnRegresar" styleClass="submit" text="Regresar" />
+         </children>
+      </HBox>
     </VBox>
 </StackPane>

@@ -2,40 +2,54 @@ package controladores;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class vistaFormularioController {
 
     @FXML
-    private TextField nombre;
+    private TextField apeliidoMaterno;
 
     @FXML
-    private TextField apellidoPaterno;
-
-    @FXML
-    private TextField apellidoMaterno;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private PasswordField passwordField;
+    private TextField apeliidoPaterno;
 
     @FXML
     private PasswordField confirmPasswordField;
 
     @FXML
-    private Button submitButton;
+    private TextField emailField;
 
     @FXML
-    void handleSubmitButtonAction(ActionEvent event) {
-        System.out.println("Nombre: " + nombre.getText());
-        System.out.println("Apellido Paterno: " + apellidoPaterno.getText());
-        System.out.println("Apellido Materno: " + apellidoMaterno.getText());
-        System.out.println("Email: " + emailField.getText());
-        System.out.println("Password: " + passwordField.getText());
-        System.out.println("Confirm Password: " + confirmPasswordField.getText());
+    private TextField nombre;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    void btnAgregar(ActionEvent event) {
+        System.out.println("agregado");
+
     }
+
+    @FXML
+void btnRegresar(ActionEvent event) {
+    try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/vistaPrincipal.fxml"));
+        Parent mainViewRoot = fxmlLoader.load();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(mainViewRoot, 600, 400));
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 }

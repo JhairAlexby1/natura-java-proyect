@@ -29,9 +29,20 @@ public class vistaPrincipalController {
     }
 
     @FXML
-    void btnBuscar(ActionEvent event) {
+void btnBuscar(ActionEvent event) {
+    try {
+        // Cargar el archivo FXML de la vista de búsqueda
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/vistaBuscar.fxml"));
+        Parent buscarViewRoot = fxmlLoader.load();
 
+        // Obtener el escenario actual y establecer la nueva escena
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(buscarViewRoot, 600, 400));
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     @FXML
     void btnEditar(ActionEvent event) {
