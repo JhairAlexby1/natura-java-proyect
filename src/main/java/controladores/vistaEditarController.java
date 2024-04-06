@@ -1,47 +1,26 @@
 package controladores;
 
-import clases.Consultor;
-import clases.GestionConsultores;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.input.MouseEvent;
 
 public class vistaEditarController {
 
-    private GestionConsultores gestionConsultores;
+    @FXML
+    private TableColumn<?, ?> idApellidoMaterni;
 
     @FXML
-    private TableView<Consultor> tableView;
+    private TableColumn<?, ?> idApellidoPaterno;
 
     @FXML
-    private TableColumn<Consultor, String> nombreColumn;
+    private TableColumn<?, ?> idDireccion;
 
     @FXML
-    private TableColumn<Consultor, String> apellidoPaternoColumn;
+    private TableColumn<?, ?> idEmail;
 
     @FXML
-    private TableColumn<Consultor, String> apellidoMaternoColumn;
+    private TableColumn<?, ?> idNombre;
 
     @FXML
-    private TableColumn<Consultor, String> telefonoColumn;
+    private TableColumn<?, ?> idTelefono;
 
-    @FXML
-    private TableColumn<Consultor, String> direccionColumn;
-
-    public vistaEditarController() {
-        this.gestionConsultores = new GestionConsultores();
-        // Aquí puedes cargar los consultores en la TableView
-    }
-
-    @FXML
-    void handleTableClick(MouseEvent event) {
-        if (event.getClickCount() == 2) { // Doble clic
-            // Aquí puedes obtener el consultor seleccionado y abrir la ventana de edición
-            Consultor consultorSeleccionado = tableView.getSelectionModel().getSelectedItem();
-            // Abre la ventana de edición con el consultorSeleccionado
-        }
-    }
-
-    // Aquí puedes agregar métodos para agregar, eliminar y actualizar consultores usando gestionConsultores
 }

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controladores.vistaEditarController"
-            prefHeight="400.0" prefWidth="600.0">
 
-    <TableView fx:id="tableView" onMouseClicked="#handleTableClick">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaEditarController">
+   <children>
+      <TableView layoutX="74.0" layoutY="69.0" prefHeight="261.0" prefWidth="451.0">
         <columns>
-            <TableColumn fx:id="nombreColumn" text="Nombre" />
-            <TableColumn fx:id="apellidoPaternoColumn" text="Apellido Paterno" />
-            <TableColumn fx:id="apellidoMaternoColumn" text="Apellido Materno" />
-            <TableColumn fx:id="telefonoColumn" text="Telefono" />
-            <TableColumn fx:id="direccionColumn" text="Direccion" />
+          <TableColumn fx:id="idNombre" prefWidth="75.0" text="Nombre" />
+          <TableColumn fx:id="idApellidoPaterno" prefWidth="75.0" text="Apellido P" />
+            <TableColumn fx:id="idApellidoMaterni" prefWidth="75.0" text="Apellido M" />
+            <TableColumn fx:id="idTelefono" prefWidth="75.0" text="Telefono" />
+            <TableColumn fx:id="idDireccion" prefWidth="75.0" text="Direccion" />
+            <TableColumn fx:id="idEmail" prefWidth="75.0" text="Email" />
         </columns>
-    </TableView>
-
+      </TableView>
+   </children>
 </AnchorPane>
