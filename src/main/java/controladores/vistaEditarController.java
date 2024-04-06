@@ -1,6 +1,7 @@
 package controladores;
 
 import clases.Consultor;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 
@@ -24,4 +25,6 @@ public class vistaEditarController {
     @FXML
     private TableColumn<Consultor, String> idTelefono;
 
+    public void regresar(ActionEvent actionEvent) {
+    }
 }
