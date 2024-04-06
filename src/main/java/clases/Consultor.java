@@ -88,6 +88,14 @@ public class Consultor {
         this.password = password;
     }
 
+    public static void agregarConsultoresPrueba() {
+    new Consultor("1", "Juan", "Perez", "Lopez", "123456789", "Direccion 1", "juan@mail.com", "password1");
+    new Consultor("2", "Maria", "Gomez", "Rodriguez", "987654321", "Direccion 2", "maria@mail.com", "password2");
+    new Consultor("3", "Carlos", "Martinez", "Gonzalez", "456789123", "Direccion 3", "carlos@mail.com", "password3");
+    new Consultor("4", "Ana", "Fernandez", "Ramirez", "789123456", "Direccion 4", "ana@mail.com", "password4");
+    new Consultor("5", "Pedro", "Castillo", "Morales", "321654987", "Direccion 5", "pedro@mail.com", "password5");
+}
+
     @Override
     public String toString() {
         return "Consultor{" +

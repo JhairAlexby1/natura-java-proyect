@@ -1,26 +1,27 @@
 package controladores;
 
+import clases.Consultor;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 
 public class vistaEditarController {
 
     @FXML
-    private TableColumn<?, ?> idApellidoMaterni;
+    private TableColumn<Consultor, String> idApellidoMaterni;
 
     @FXML
-    private TableColumn<?, ?> idApellidoPaterno;
+    private TableColumn<Consultor, String> idApellidoPaterno;
 
     @FXML
-    private TableColumn<?, ?> idDireccion;
+    private TableColumn<Consultor, String> idDireccion;
 
     @FXML
-    private TableColumn<?, ?> idEmail;
+    private TableColumn<Consultor, String> idEmail;
 
     @FXML
-    private TableColumn<?, ?> idNombre;
+    private TableColumn<Consultor, String> idNombre;
 
     @FXML
-    private TableColumn<?, ?> idTelefono;
+    private TableColumn<Consultor, String> idTelefono;
 
 }
