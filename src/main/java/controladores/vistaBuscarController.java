@@ -1,5 +1,6 @@
 package controladores;
 
+import clases.Consultor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,8 +48,26 @@ public class vistaBuscarController {
     }
 
    @FXML
+   // Método para buscar un consultor por nombre o ID
 void buscarConsultor(ActionEvent event) {
+    String searchTerm = searchField.getText().trim();
+    if (searchTerm.isEmpty()) {
+        resultsArea.setText("Por favor, ingresa un nombre o ID para buscar.");
+        return;
+    }
 
+    StringBuilder results = new StringBuilder();
+    for (Consultor consultor : Consultor.getConsultores()) {
+        if (consultor.getNombre().equalsIgnoreCase(searchTerm) || consultor.getId().equals(searchTerm)) {
+            results.append(consultor.toString()).append("\n");
+        }
+    }
+
+    if (results.length() == 0) {
+        resultsArea.setText("No se encontraron consultores con el nombre o ID proporcionado.");
+    } else {
+        resultsArea.setText(results.toString());
+    }
 }
 
     }
