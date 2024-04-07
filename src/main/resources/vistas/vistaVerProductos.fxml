@@ -29,7 +29,11 @@
                     <PropertyValueFactory property="tipo" />
                 </cellValueFactory>
             </TableColumn>
-
+<TableColumn fx:id="columnaEliminar" >
+    <cellValueFactory>
+        <PropertyValueFactory property="eliminar" />
+    </cellValueFactory>
+</TableColumn>
         </columns>
     </TableView>
     <Button text="Regresar" fx:id="btnRegresar" onAction="#regresar" />
