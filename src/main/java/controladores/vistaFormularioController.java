@@ -48,18 +48,16 @@ public class vistaFormularioController {
         String emailConsultor = emailField.getText();
         String passwordConsultor = passwordField.getText();
         String telefonoConsultor = telefonoField.getText();
-        String direccionConsultor = ""; // Aquí debes obtener la dirección del formulario
+        String direccionConsultor = "";
 
-        // Asegúrate de que los campos de contraseña coincidan
         if (!passwordConsultor.equals(confirmPasswordField.getText())) {
             System.out.println("Las contraseñas no coinciden");
             return;
         }
 
-        // Crea una nueva instancia de Consultor
         Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
 
-        // Muestra todos los consultores
+        // Muestra todos los consultores en terminal para ver que si funciona
         System.out.println(Consultor.getConsultores());
 
         System.out.println("Consultor agregado");

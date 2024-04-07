@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controladores.vistaEditarConsultorController">
+<AnchorPane prefHeight="333.0" prefWidth="187.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaEditarConsultorController">
    <children>
       <TextField fx:id="txtId" layoutX="20.0" layoutY="20.0" />
       <TextField fx:id="txtNombre" layoutX="20.0" layoutY="60.0" />
@@ -12,6 +12,6 @@
       <TextField fx:id="txtTelefono" layoutX="20.0" layoutY="180.0" />
       <TextField fx:id="txtDireccion" layoutX="20.0" layoutY="220.0" />
       <TextField fx:id="txtEmail" layoutX="20.0" layoutY="260.0" />
-      <Button fx:id="btnGuardar" layoutX="20.0" layoutY="300.0" text="Guardar" />
+      <Button fx:id="btnGuardar" layoutX="64.0" layoutY="293.0" text="Guardar" />
    </children>
 </AnchorPane>
