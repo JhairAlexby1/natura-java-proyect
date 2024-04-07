@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -39,35 +40,70 @@ public class vistaFormularioController {
     @FXML
     private PasswordField passwordField;
 
-   @FXML
-void btnAgregar(ActionEvent event) {
-    String idConsultor = id.getText();
-    String nombreConsultor = nombre.getText();
-    String apellidoPaternoConsultor = apellidoPaterno.getText();
-    String apellidoMaternoConsultor = apellidoMaterno.getText();
-    String emailConsultor = emailField.getText();
-    String passwordConsultor = passwordField.getText();
-    String telefonoConsultor = telefonoField.getText();
-    String direccionConsultor = "";
+    @FXML
+    //esto sirve para que los campos de texto solo acepten letras y no números, para que no haya errores al ingresar datos
+    public void initialize() {
+        nombre.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\D*")) {
+                nombre.setText(newValue.replaceAll("[^\\D]", ""));
+            }
+        });
 
-    // Verifica si todos los campos están llenos
-    if (idConsultor.isEmpty() || nombreConsultor.isEmpty() || apellidoPaternoConsultor.isEmpty() || apellidoMaternoConsultor.isEmpty() || emailConsultor.isEmpty() || passwordConsultor.isEmpty() || telefonoConsultor.isEmpty()) {
-        System.out.println("Por favor, llena todos los campos del formulario.");
-        return;
+        apellidoMaterno.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\D*")) {
+                apellidoMaterno.setText(newValue.replaceAll("[^\\D]", ""));
+            }
+        });
+
+        apellidoPaterno.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\D*")) {
+                apellidoPaterno.setText(newValue.replaceAll("[^\\D]", ""));
+            }
+        });
+
+        telefonoField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                telefonoField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 
-    if (!passwordConsultor.equals(confirmPasswordField.getText())) {
-        System.out.println("Las contraseñas no coinciden");
-        return;
+    // esto sirve para mostrar una alerta en caso de que haya campos vacíos
+    private void showAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
-    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
+    @FXML
+    void btnAgregar(ActionEvent event) {
+        String idConsultor = id.getText();
+        String nombreConsultor = nombre.getText();
+        String apellidoPaternoConsultor = apellidoPaterno.getText();
+        String apellidoMaternoConsultor = apellidoMaterno.getText();
+        String emailConsultor = emailField.getText();
+        String passwordConsultor = passwordField.getText();
+        String telefonoConsultor = telefonoField.getText();
+        String direccionConsultor = "";
 
-    // Muestra todos los consultores en terminal para ver que si funciona
-    System.out.println(Consultor.getConsultores());
+        if (idConsultor.isEmpty() || nombreConsultor.isEmpty() || apellidoPaternoConsultor.isEmpty() || apellidoMaternoConsultor.isEmpty() || emailConsultor.isEmpty() || passwordConsultor.isEmpty() || telefonoConsultor.isEmpty()) {
+            showAlert("Campos vacíos", "Por favor, llena todos los campos", "Todos los campos deben estar llenos para continuar.");
+            return;
+        }
 
-    System.out.println("Consultor agregado");
-}
+        if (!passwordConsultor.equals(confirmPasswordField.getText())) {
+            showAlert("Contraseñas no coinciden", "Por favor, verifica las contraseñas", "Las contraseñas ingresadas no coinciden.");
+            return;
+        }
+
+        Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
+
+        System.out.println(Consultor.getConsultores());
+
+        System.out.println("Consultor agregado");
+    }
 
     @FXML
     void btnRegresar(ActionEvent event) {

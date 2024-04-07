@@ -35,28 +35,22 @@ public class vistaVerProductosController {
     @FXML
     private TableColumn<Producto, String> columnaTipo;
 
-
     public void initialize() {
         columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnaTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 
         Pedido pedido = Pedido.getInstance();
-
-
-    ObservableList<Producto> productos = FXCollections.observableArrayList(pedido.getProductos());
-
-    tablaProductos.setItems(productos);
-}
+        ObservableList<Producto> productos = FXCollections.observableArrayList(pedido.getProductos());
+        tablaProductos.setItems(productos);
+    }
 
     public void regresar(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/vistas/vistaProductosNatura.fxml"));
-
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-
         } catch (IOException e) {
             e.printStackTrace();
         }

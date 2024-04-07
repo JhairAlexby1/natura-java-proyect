@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -34,46 +35,72 @@ public class vistaAgregarProductoController {
     }
 
     @FXML
-void agregarProducto(ActionEvent event) {
-    String tipo = tipoProducto.getValue();
-    String nombre = nombreProducto.getText();
-    int id = Integer.parseInt(idProducto.getText());
-    int cantidad = Integer.parseInt(cantidadProducto.getText());
+    public void initialize() {
+        idProducto.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                idProducto.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
 
-    Producto producto;
-
-    switch (tipo) {
-        case "Perfume":
-            producto = new Perfume(id, tipo, nombre, cantidad);
-            break;
-        case "Maquillaje":
-            producto = new Maquillaje(id, tipo, nombre, cantidad);
-            break;
-        case "Joyeria":
-            producto = new Joyeria(id, tipo, nombre, cantidad);
-            break;
-        case "Perfumeria":
-            producto = new Perfume(id, tipo, nombre, cantidad); // Cambio aquí
-            break;
-        default:
-            producto = new Producto(id, tipo, nombre);
+        cantidadProducto.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                cantidadProducto.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 
-    this.pedido.agregarProducto(producto);
+    //esto sirve para mostrar una alerta en caso de que no se hayan llenado todos los campos
+    private void showAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
-    // Imprimir los detalles del producto en la terminal
-    System.out.println("Producto agregado: " + producto.toString());
-}
+    @FXML
+    void agregarProducto(ActionEvent event) {
+        String tipo = tipoProducto.getValue();
+        String nombre = nombreProducto.getText();
+        String idStr = idProducto.getText();
+        String cantidadStr = cantidadProducto.getText();
+
+        if (tipo == null || nombre.isEmpty() || idStr.isEmpty() || cantidadStr.isEmpty()) {
+            showAlert("Campos vacíos", "Por favor, llena todos los campos", "Todos los campos deben estar llenos para continuar.");
+            return;
+        }
+
+        int id = Integer.parseInt(idStr);
+        int cantidad = Integer.parseInt(cantidadStr);
+
+        Producto producto;
+        switch (tipo) {
+            case "Perfume":
+                producto = new Perfume(id, tipo, nombre, cantidad);
+                break;
+            case "Maquillaje":
+                producto = new Maquillaje(id, tipo, nombre, cantidad);
+                break;
+            case "Joyeria":
+                producto = new Joyeria(id, tipo, nombre, cantidad);
+                break;
+            case "Perfumeria":
+                producto = new Perfume(id, tipo, nombre, cantidad);
+                break;
+            default:
+                producto = new Producto(id, tipo, nombre);
+        }
+
+        this.pedido.agregarProducto(producto);
+
+        System.out.println("Producto agregado: " + producto.toString());
+    }
 
     public void regresar(ActionEvent actionEvent) {
         try {
-            // Cargar el archivo FXML
             Parent root = FXMLLoader.load(getClass().getResource("/vistas/vistaProductosNatura.fxml"));
-
-            // Obtener el escenario actual y establecer la nueva escena
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-
         } catch (IOException e) {
             e.printStackTrace();
         }

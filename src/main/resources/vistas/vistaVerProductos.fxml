@@ -29,6 +29,7 @@
                     <PropertyValueFactory property="tipo" />
                 </cellValueFactory>
             </TableColumn>
+
         </columns>
     </TableView>
     <Button text="Regresar" fx:id="btnRegresar" onAction="#regresar" />
