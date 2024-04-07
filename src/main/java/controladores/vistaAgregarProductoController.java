@@ -52,6 +52,9 @@ void agregarProducto(ActionEvent event) {
         case "Joyeria":
             producto = new Joyeria(id, tipo, nombre, cantidad);
             break;
+        case "Perfumeria":
+            producto = new Perfume(id, tipo, nombre, cantidad); // Cambio aquí
+            break;
         default:
             producto = new Producto(id, tipo, nombre);
     }
