@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controladores.vistaAgregarProductoController" prefWidth="600" prefHeight="400" spacing="20" alignment="CENTER">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+    <Label text="Agregar Producto" style="-fx-font-weight: bold; -fx-font-size: 18px;" />
+    <HBox spacing="10">
+        <ComboBox fx:id="tipoProducto" promptText="Seleccione el tipo de producto" prefWidth="200">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Maquillaje" />
+                    <String fx:value="Joyeria" />
+                    <String fx:value="Perfumeria" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <TextField fx:id="nombreProducto" promptText="Nombre del producto" prefWidth="200" />
+        <TextField fx:id="idProducto" promptText="ID del producto" prefWidth="100" />
+        <TextField fx:id="cantidadProducto" promptText="Cantidad del producto" prefWidth="100" />
+    </HBox>
+    <Button text="Agregar" onAction="#agregarProducto" prefWidth="150" style="-fx-font-weight: bold;" />
+</VBox>
