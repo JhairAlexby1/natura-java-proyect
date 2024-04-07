@@ -52,4 +52,18 @@ void btnBuscar(ActionEvent event) {
             e.printStackTrace();
     }
 }
+
+    public void btnRegresar(ActionEvent actionEvent) {
+        try {
+            // Cargar el archivo FXML
+            Parent root = FXMLLoader.load(getClass().getResource("/vistas/selectorMenu.fxml"));
+
+            // Obtener el escenario actual y establecer la nueva escena
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 600, 400));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
