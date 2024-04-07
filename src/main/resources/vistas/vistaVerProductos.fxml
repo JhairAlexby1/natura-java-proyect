@@ -24,6 +24,11 @@
                     <PropertyValueFactory property="cantidad" />
                 </cellValueFactory>
             </TableColumn>
+            <TableColumn fx:id="columnaTipo" text="Tipo">
+                <cellValueFactory>
+                    <PropertyValueFactory property="tipo" />
+                </cellValueFactory>
+            </TableColumn>
         </columns>
     </TableView>
     <Button text="Regresar" fx:id="btnRegresar" onAction="#regresar" />

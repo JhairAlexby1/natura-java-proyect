@@ -32,12 +32,17 @@ public class vistaVerProductosController {
     @FXML
     private TableColumn<Producto, Integer> columnaCantidad;
 
-    public void initialize() {
-    columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-    columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
-    columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+    @FXML
+    private TableColumn<Producto, String> columnaTipo;
 
-    Pedido pedido = Pedido.getInstance();
+
+    public void initialize() {
+        columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        columnaTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+
+        Pedido pedido = Pedido.getInstance();
 
 
     ObservableList<Producto> productos = FXCollections.observableArrayList(pedido.getProductos());
