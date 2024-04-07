@@ -30,9 +30,19 @@ public class vistaProductosNaturaController {
     }
 
     @FXML
-    void btnRegresar(ActionEvent event) {
-        System.out.println("Regresando al menu principal");
+void btnRegresar(ActionEvent event) {
+    try {
+        // Cargar el archivo FXML
+        Parent root = FXMLLoader.load(getClass().getResource("/vistas/selectorMenu.fxml"));
+
+        // Obtener el escenario actual y establecer la nueva escena
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     @FXML
     void verProductos(ActionEvent event) {

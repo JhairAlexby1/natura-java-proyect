@@ -25,4 +25,5 @@
         <TextField fx:id="cantidadProducto" promptText="Cantidad del producto" prefWidth="100" />
     </HBox>
     <Button text="Agregar" onAction="#agregarProducto" prefWidth="150" style="-fx-font-weight: bold;" />
+    <Button text="Regresar" onAction="#regresar" prefWidth="150" style="-fx-font-weight: bold;" />
 </VBox>
