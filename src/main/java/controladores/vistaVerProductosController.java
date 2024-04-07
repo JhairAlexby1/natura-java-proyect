@@ -1,5 +1,6 @@
 package controladores;
 
+import clases.Maquillaje;
 import clases.Pedido;
 import clases.Producto;
 import javafx.collections.FXCollections;
@@ -32,25 +33,25 @@ public class vistaVerProductosController {
     private TableColumn<Producto, Integer> columnaCantidad;
 
     public void initialize() {
-        // Inicializar las columnas de la tabla
-        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+    columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+    columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
+    columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 
-        // Obtener los productos del pedido
-        Pedido pedido = new Pedido();
-        ObservableList<Producto> productos = FXCollections.observableArrayList(pedido.getProductos());
+    Pedido pedido = new Pedido();
+    Producto producto1 = new Producto(1, "Maquillaje", "Avon");
+    Producto producto2 = new Producto(1 ,"Perfume" , "Natura");
+    pedido.agregarProducto(producto1);
+    pedido.agregarProducto(producto2);
 
-        // Cargar los productos en la tabla
-        tablaProductos.setItems(productos);
-    }
+    ObservableList<Producto> productos = FXCollections.observableArrayList(pedido.getProductos());
+
+    tablaProductos.setItems(productos);
+}
 
     public void regresar(ActionEvent actionEvent) {
         try {
-            // Cargar el archivo FXML
             Parent root = FXMLLoader.load(getClass().getResource("/vistas/vistaProductosNatura.fxml"));
 
-            // Obtener el escenario actual y establecer la nueva escena
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
 
