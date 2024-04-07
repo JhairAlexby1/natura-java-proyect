@@ -16,6 +16,7 @@
             <TextField fx:id="apellidoMaterno" prefHeight="25.0" prefWidth="257.0" promptText="Apellido Materno" />
             <TextField fx:id="apellidoPaterno" prefWidth="250" promptText="Apellido Paterno" />
         </HBox>
+        <TextField fx:id="direccionField" prefWidth="510" promptText="Direccion" GridPane.rowIndex="9" />
         <TextField fx:id="emailField" prefHeight="3.0" prefWidth="517.0" promptText="Correo" GridPane.rowIndex="5" />
         <TextField fx:id="telefonoField" prefWidth="200" promptText="Telefono" GridPane.rowIndex="6" />
         <PasswordField fx:id="passwordField" prefWidth="510" promptText="Contrasena" GridPane.rowIndex="7" />

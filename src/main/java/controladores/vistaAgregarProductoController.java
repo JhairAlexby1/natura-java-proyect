@@ -101,6 +101,8 @@ void agregarProducto(ActionEvent event) {
 
     this.pedido.agregarProducto(producto);
 
+    showAlert("Producto agregado", "El producto se ha agregado con éxito", "Producto: " + producto.toString());
+
     System.out.println("Producto agregado: " + producto.toString());
 }
 

@@ -12,14 +12,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class vistaVerProductosController {
 
@@ -49,24 +47,33 @@ public class vistaVerProductosController {
 
         columnaEliminar.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         columnaEliminar.setCellFactory(param -> new TableCell<>() {
-            private final Button deleteButton = new Button("Eliminar");
+            private final Button deleteButton = new Button("X"); //puse la x poruqe si le ponia eliminar , no se veia en la tabla
 
             @Override
-            protected void updateItem(Producto producto, boolean empty) {
-                super.updateItem(producto, empty);
+            //lo de abajo sirve para `poder eliminar un producto de la tabla
+        protected void updateItem(Producto producto, boolean empty) {
+            super.updateItem(producto, empty);
 
-                if (producto == null) {
-                    setGraphic(null);
-                    return;
-                }
+            if (producto == null) {
+                setGraphic(null);
+                return;
+            }
 
-                setGraphic(deleteButton);
-                deleteButton.setOnAction(event -> {
+            setGraphic(deleteButton);
+            deleteButton.setOnAction(event -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmación de eliminación");
+                alert.setHeaderText("Estás a punto de eliminar un producto");
+                alert.setContentText("¿Estás seguro de que quieres eliminar el producto " + producto.getNombre() + "?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
                     Pedido pedido = Pedido.getInstance();
                     pedido.eliminarProducto(producto);
                     tablaProductos.getItems().remove(producto);
-                });
-            }
+                }
+            });
+}
         });
 
         Pedido pedido = Pedido.getInstance();
@@ -83,4 +90,6 @@ public class vistaVerProductosController {
             e.printStackTrace();
         }
     }
+
+
 }

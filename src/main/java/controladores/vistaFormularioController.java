@@ -29,6 +29,9 @@ public class vistaFormularioController {
     private TextField telefonoField;
 
     @FXML
+    private TextField direccionField;
+
+    @FXML
     private TextField emailField;
 
     @FXML
@@ -77,7 +80,7 @@ public class vistaFormularioController {
         alert.showAndWait();
     }
 
-    @FXML
+ @FXML
 void btnAgregar(ActionEvent event) {
     String idConsultor = id.getText();
     String nombreConsultor = nombre.getText();
@@ -86,9 +89,9 @@ void btnAgregar(ActionEvent event) {
     String emailConsultor = emailField.getText();
     String passwordConsultor = passwordField.getText();
     String telefonoConsultor = telefonoField.getText();
-    String direccionConsultor = "";
+    String direccionConsultor = direccionField.getText(); // Obtener la dirección del campo de texto
 
-    if (idConsultor.isEmpty() || nombreConsultor.isEmpty() || apellidoPaternoConsultor.isEmpty() || apellidoMaternoConsultor.isEmpty() || emailConsultor.isEmpty() || passwordConsultor.isEmpty() || telefonoConsultor.isEmpty()) {
+    if (idConsultor.isEmpty() || nombreConsultor.isEmpty() || apellidoPaternoConsultor.isEmpty() || apellidoMaternoConsultor.isEmpty() || emailConsultor.isEmpty() || passwordConsultor.isEmpty() || telefonoConsultor.isEmpty() || direccionConsultor.isEmpty()) {
         showAlert("Campos vacíos", "Por favor, llena todos los campos", "Todos los campos deben estar llenos para continuar.");
         return;
     }
@@ -106,13 +109,12 @@ void btnAgregar(ActionEvent event) {
         }
     }
 
-    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
+    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor); // Pasar la dirección al constructor
 
     System.out.println(Consultor.getConsultores());
 
     System.out.println("Consultor agregado");
 }
-
     @FXML
     void btnRegresar(ActionEvent event) {
         try {
