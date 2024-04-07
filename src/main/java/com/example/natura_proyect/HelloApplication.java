@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Consultor.agregarConsultoresPrueba(); //con esto agregamos unos datos al array :)
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/vistas/vistaPrincipal.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/vistas/selectorMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Hello!");
         stage.setScene(scene);
