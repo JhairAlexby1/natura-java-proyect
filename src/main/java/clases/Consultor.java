@@ -121,4 +121,14 @@ public class Consultor {
     }
 
 
+    public static void actualizarConsultor(Consultor consultorActualizado) {
+    for (int i = 0; i < consultores.size(); i++) {
+        if (consultores.get(i).getId().equals(consultorActualizado.getId())) {
+            consultores.set(i, consultorActualizado);
+            break;
+        }
+    }
+}
+
+
 }
