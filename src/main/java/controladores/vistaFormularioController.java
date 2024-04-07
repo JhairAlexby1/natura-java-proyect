@@ -39,29 +39,35 @@ public class vistaFormularioController {
     @FXML
     private PasswordField passwordField;
 
-    @FXML
-    void btnAgregar(ActionEvent event) {
-        String idConsultor = id.getText();
-        String nombreConsultor = nombre.getText();
-        String apellidoPaternoConsultor = apellidoPaterno.getText();
-        String apellidoMaternoConsultor = apellidoMaterno.getText();
-        String emailConsultor = emailField.getText();
-        String passwordConsultor = passwordField.getText();
-        String telefonoConsultor = telefonoField.getText();
-        String direccionConsultor = "";
+   @FXML
+void btnAgregar(ActionEvent event) {
+    String idConsultor = id.getText();
+    String nombreConsultor = nombre.getText();
+    String apellidoPaternoConsultor = apellidoPaterno.getText();
+    String apellidoMaternoConsultor = apellidoMaterno.getText();
+    String emailConsultor = emailField.getText();
+    String passwordConsultor = passwordField.getText();
+    String telefonoConsultor = telefonoField.getText();
+    String direccionConsultor = "";
 
-        if (!passwordConsultor.equals(confirmPasswordField.getText())) {
-            System.out.println("Las contraseñas no coinciden");
-            return;
-        }
-
-        Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
-
-        // Muestra todos los consultores en terminal para ver que si funciona
-        System.out.println(Consultor.getConsultores());
-
-        System.out.println("Consultor agregado");
+    // Verifica si todos los campos están llenos
+    if (idConsultor.isEmpty() || nombreConsultor.isEmpty() || apellidoPaternoConsultor.isEmpty() || apellidoMaternoConsultor.isEmpty() || emailConsultor.isEmpty() || passwordConsultor.isEmpty() || telefonoConsultor.isEmpty()) {
+        System.out.println("Por favor, llena todos los campos del formulario.");
+        return;
     }
+
+    if (!passwordConsultor.equals(confirmPasswordField.getText())) {
+        System.out.println("Las contraseñas no coinciden");
+        return;
+    }
+
+    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
+
+    // Muestra todos los consultores en terminal para ver que si funciona
+    System.out.println(Consultor.getConsultores());
+
+    System.out.println("Consultor agregado");
+}
 
     @FXML
     void btnRegresar(ActionEvent event) {
