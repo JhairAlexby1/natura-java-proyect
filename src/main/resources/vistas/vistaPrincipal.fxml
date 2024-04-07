@@ -8,13 +8,15 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaPrincipalController">
    <stylesheets>
       <URL value="@../styles/stylesVistaPrincipal.css" />
+      <URL value="@../styles/stylesBotones.css" />
+
    </stylesheets>
    <children>
       <Text layoutX="209.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titulo-vista-principal" text="Bienvenido Líder Natura" />
-      <Button layoutX="127.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnAgregar" styleClass="button-vista-principal" text="Agregar" />
-      <Button layoutX="274.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnBuscar" styleClass="button-vista-principal" text="Buscar" />
-      <Button layoutX="427.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnEditar" styleClass="button-vista-principal" text="Editar" />
-      <Button layoutX="268.0" layoutY="272.0" mnemonicParsing="false" onAction="#btnRegresar" styleClass="button-vista-principal" text="Regresar" />
+      <Button layoutX="127.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnAgregar" styleClass="button" text="Agregar" />
+      <Button layoutX="274.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnBuscar" styleClass="button" text="Buscar" />
+      <Button layoutX="427.0" layoutY="188.0" mnemonicParsing="false" onAction="#btnEditar" styleClass="button" text="Editar" />
+      <Button layoutX="268.0" layoutY="272.0" mnemonicParsing="false" onAction="#btnRegresar" styleClass="button" text="Regresar" />
 
    </children>
 </AnchorPane>

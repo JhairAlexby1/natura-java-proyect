@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.net.URL?>
 
-<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaBuscarController">
+<VBox spacing="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaBuscarController">
     <stylesheets>
-        <URL value="@../styles/stylesVistaBuscar.css" />
+        <URL value="@../styles/stylesBotones.css" />
     </stylesheets>
 
-    <HBox spacing="10" alignment="CENTER">
-        <TextField fx:id="searchField" promptText="Escribe el nombre del consultor" prefWidth="300" />
-        <Button fx:id="searchButton" text="Buscar" onAction="#buscarConsultor" />
+    <HBox alignment="CENTER" spacing="10">
+        <TextField fx:id="searchField" prefWidth="300" promptText="Escribe el nombre del consultor" />
+        <Button fx:id="searchButton" onAction="#buscarConsultor" styleClass="button" text="Buscar" />
     </HBox>
 
     <TextArea fx:id="resultsArea" editable="false" prefHeight="200" />
 
-    <Button fx:id="backButton" text="Regresar" onAction="#btnRegresar" alignment="CENTER" />
+    <Button fx:id="backButton" alignment="CENTER" onAction="#btnRegresar" prefHeight="43.0" prefWidth="123.0" styleClass="button" text="Regresar" />
 </VBox>

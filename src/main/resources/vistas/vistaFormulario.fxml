@@ -5,7 +5,7 @@
 
 <VBox alignment="CENTER" prefHeight="400" prefWidth="600" spacing="20" styleClass="root" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaFormularioController">
     <stylesheets>
-        <URL value="@../styles/stylesVistaFormulario.css" />
+        <URL value="@../styles/stylesBotones.css" />
     </stylesheets>
 
     <Label styleClass="title" text="Registro de consultor" />
@@ -38,7 +38,7 @@
     </GridPane>
 
     <HBox alignment="CENTER" spacing="20">
-        <Button onAction="#btnAgregar" styleClass="submit" text="Agregar" />
-        <Button onAction="#btnRegresar" styleClass="submit" text="Regresar" />
+        <Button onAction="#btnAgregar" styleClass="button" text="Agregar" />
+        <Button onAction="#btnRegresar" styleClass="button" text="Regresar" />
     </HBox>
 </VBox>
