@@ -78,32 +78,40 @@ public class vistaFormularioController {
     }
 
     @FXML
-    void btnAgregar(ActionEvent event) {
-        String idConsultor = id.getText();
-        String nombreConsultor = nombre.getText();
-        String apellidoPaternoConsultor = apellidoPaterno.getText();
-        String apellidoMaternoConsultor = apellidoMaterno.getText();
-        String emailConsultor = emailField.getText();
-        String passwordConsultor = passwordField.getText();
-        String telefonoConsultor = telefonoField.getText();
-        String direccionConsultor = "";
+void btnAgregar(ActionEvent event) {
+    String idConsultor = id.getText();
+    String nombreConsultor = nombre.getText();
+    String apellidoPaternoConsultor = apellidoPaterno.getText();
+    String apellidoMaternoConsultor = apellidoMaterno.getText();
+    String emailConsultor = emailField.getText();
+    String passwordConsultor = passwordField.getText();
+    String telefonoConsultor = telefonoField.getText();
+    String direccionConsultor = "";
 
-        if (idConsultor.isEmpty() || nombreConsultor.isEmpty() || apellidoPaternoConsultor.isEmpty() || apellidoMaternoConsultor.isEmpty() || emailConsultor.isEmpty() || passwordConsultor.isEmpty() || telefonoConsultor.isEmpty()) {
-            showAlert("Campos vacíos", "Por favor, llena todos los campos", "Todos los campos deben estar llenos para continuar.");
-            return;
-        }
-
-        if (!passwordConsultor.equals(confirmPasswordField.getText())) {
-            showAlert("Contraseñas no coinciden", "Por favor, verifica las contraseñas", "Las contraseñas ingresadas no coinciden.");
-            return;
-        }
-
-        Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
-
-        System.out.println(Consultor.getConsultores());
-
-        System.out.println("Consultor agregado");
+    if (idConsultor.isEmpty() || nombreConsultor.isEmpty() || apellidoPaternoConsultor.isEmpty() || apellidoMaternoConsultor.isEmpty() || emailConsultor.isEmpty() || passwordConsultor.isEmpty() || telefonoConsultor.isEmpty()) {
+        showAlert("Campos vacíos", "Por favor, llena todos los campos", "Todos los campos deben estar llenos para continuar.");
+        return;
     }
+
+    if (!passwordConsultor.equals(confirmPasswordField.getText())) {
+        showAlert("Contraseñas no coinciden", "Por favor, verifica las contraseñas", "Las contraseñas ingresadas no coinciden.");
+        return;
+    }
+
+    // Verificar si el ID ya existe
+    for (Consultor consultor : Consultor.getConsultores()) {
+        if (consultor.getId().equals(idConsultor)) {
+            showAlert("ID ya existe", "Por favor, ingresa un ID diferente", "El ID ingresado ya existe en la base de datos.");
+            return;
+        }
+    }
+
+    Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor);
+
+    System.out.println(Consultor.getConsultores());
+
+    System.out.println("Consultor agregado");
+}
 
     @FXML
     void btnRegresar(ActionEvent event) {

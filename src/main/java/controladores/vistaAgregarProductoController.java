@@ -59,42 +59,50 @@ public class vistaAgregarProductoController {
     }
 
     @FXML
-    void agregarProducto(ActionEvent event) {
-        String tipo = tipoProducto.getValue();
-        String nombre = nombreProducto.getText();
-        String idStr = idProducto.getText();
-        String cantidadStr = cantidadProducto.getText();
+void agregarProducto(ActionEvent event) {
+    String tipo = tipoProducto.getValue();
+    String nombre = nombreProducto.getText();
+    String idStr = idProducto.getText();
+    String cantidadStr = cantidadProducto.getText();
 
-        if (tipo == null || nombre.isEmpty() || idStr.isEmpty() || cantidadStr.isEmpty()) {
-            showAlert("Campos vacíos", "Por favor, llena todos los campos", "Todos los campos deben estar llenos para continuar.");
+    if (tipo == null || nombre.isEmpty() || idStr.isEmpty() || cantidadStr.isEmpty()) {
+        showAlert("Campos vacíos", "Por favor, llena todos los campos", "Todos los campos deben estar llenos para continuar.");
+        return;
+    }
+
+    int id = Integer.parseInt(idStr);
+    int cantidad = Integer.parseInt(cantidadStr);
+
+    // Verificar si el ID del producto ya existe
+    for (Producto producto : this.pedido.getProductos()) {
+        if (producto.getId() == id) {
+            showAlert("ID ya existe", "Por favor, ingresa un ID diferente", "El ID ingresado ya existe en la base de datos.");
             return;
         }
-
-        int id = Integer.parseInt(idStr);
-        int cantidad = Integer.parseInt(cantidadStr);
-
-        Producto producto;
-        switch (tipo) {
-            case "Perfume":
-                producto = new Perfume(id, tipo, nombre, cantidad);
-                break;
-            case "Maquillaje":
-                producto = new Maquillaje(id, tipo, nombre, cantidad);
-                break;
-            case "Joyeria":
-                producto = new Joyeria(id, tipo, nombre, cantidad);
-                break;
-            case "Perfumeria":
-                producto = new Perfume(id, tipo, nombre, cantidad);
-                break;
-            default:
-                producto = new Producto(id, tipo, nombre);
-        }
-
-        this.pedido.agregarProducto(producto);
-
-        System.out.println("Producto agregado: " + producto.toString());
     }
+
+    Producto producto;
+    switch (tipo) {
+        case "Perfume":
+            producto = new Perfume(id, tipo, nombre, cantidad);
+            break;
+        case "Maquillaje":
+            producto = new Maquillaje(id, tipo, nombre, cantidad);
+            break;
+        case "Joyeria":
+            producto = new Joyeria(id, tipo, nombre, cantidad);
+            break;
+        case "Perfumeria":
+            producto = new Perfume(id, tipo, nombre, cantidad);
+            break;
+        default:
+            producto = new Producto(id, tipo, nombre);
+    }
+
+    this.pedido.agregarProducto(producto);
+
+    System.out.println("Producto agregado: " + producto.toString());
+}
 
     public void regresar(ActionEvent actionEvent) {
         try {
