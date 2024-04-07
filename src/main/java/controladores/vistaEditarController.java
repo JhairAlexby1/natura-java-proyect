@@ -103,7 +103,7 @@ public class vistaEditarController {
 
 
 
-    //esta funcion se encarga de abrir la ventana de edicion de consultor
+    //esta funcion se encarga de abrir la ventana de edicion de consultort
 private void onEdit() {
     if (tablaRegistro.getSelectionModel().getSelectedItem() != null) {
         Consultor selectedConsultor = tablaRegistro.getSelectionModel().getSelectedItem();

@@ -32,10 +32,8 @@ public class vistaProductosNaturaController {
     @FXML
 void btnRegresar(ActionEvent event) {
     try {
-        // Cargar el archivo FXML
         Parent root = FXMLLoader.load(getClass().getResource("/vistas/selectorMenu.fxml"));
 
-        // Obtener el escenario actual y establecer la nueva escena
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
 
@@ -47,10 +45,8 @@ void btnRegresar(ActionEvent event) {
     @FXML
     void verProductos(ActionEvent event) {
         try {
-            // Cargar el archivo FXML
             Parent root = FXMLLoader.load(getClass().getResource("/vistas/vistaVerProductos.fxml"));
 
-            // Obtener el escenario actual y establecer la nueva escena
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
 

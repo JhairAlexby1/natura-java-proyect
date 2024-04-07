@@ -1,15 +1,16 @@
 package controladores;
 
 import clases.Consultor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,13 +29,37 @@ public class vistaBuscarController {
     @FXML
     private TextField searchField;
 
+    @FXML
+    private TableView<Consultor> resultsTable;
+
+    @FXML
+    private TableColumn<Consultor, String> colId;
+
+    @FXML
+    private TableColumn<Consultor, String> colNombre;
+
+    @FXML
+    private TableColumn<Consultor, String> colApellidoPaterno;
+
+    @FXML
+    private TableColumn<Consultor, String> colApellidoMaterno;
+
+    @FXML
+    private TableColumn<Consultor, String> colTelefono;
+
+    @FXML
+    private TableColumn<Consultor, String> colDireccion;
+
+    @FXML
+    private TableColumn<Consultor, String> colEmail;
+
+
 
 
 
     @FXML
     void btnRegresar(ActionEvent event) {
         try {
-            // Cargar el archivo FXML del menú principal
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vistas/vistaPrincipal.fxml"));
             Parent mainViewRoot = fxmlLoader.load();
 
@@ -47,26 +72,30 @@ public class vistaBuscarController {
         }
     }
 
-   @FXML
-   // Método para buscar un consultor por nombre o ID
+  @FXML
 void buscarConsultor(ActionEvent event) {
     String searchTerm = searchField.getText().trim();
     if (searchTerm.isEmpty()) {
-        resultsArea.setText("Por favor, ingresa un nombre o ID para buscar.");
         return;
     }
 
-    StringBuilder results = new StringBuilder();
+    ObservableList<Consultor> results = FXCollections.observableArrayList();
     for (Consultor consultor : Consultor.getConsultores()) {
         if (consultor.getNombre().equalsIgnoreCase(searchTerm) || consultor.getId().equals(searchTerm)) {
-            results.append(consultor.toString()).append("\n");
+            results.add(consultor);
         }
     }
 
-    if (results.length() == 0) {
-        resultsArea.setText("No se encontraron consultores con el nombre o ID proporcionado.");
+    if (results.isEmpty()) {
     } else {
-        resultsArea.setText(results.toString());
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colApellidoPaterno.setCellValueFactory(new PropertyValueFactory<>("apellidoPaterno"));
+        colApellidoMaterno.setCellValueFactory(new PropertyValueFactory<>("apellidoMaterno"));
+        colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        resultsTable.setItems(results);
     }
 }
 
