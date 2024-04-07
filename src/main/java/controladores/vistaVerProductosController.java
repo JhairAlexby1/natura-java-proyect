@@ -37,11 +37,8 @@ public class vistaVerProductosController {
     columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
     columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 
-    Pedido pedido = new Pedido();
-    Producto producto1 = new Producto(1, "Maquillaje", "Avon");
-    Producto producto2 = new Producto(1 ,"Perfume" , "Natura");
-    pedido.agregarProducto(producto1);
-    pedido.agregarProducto(producto2);
+    Pedido pedido = Pedido.getInstance();
+
 
     ObservableList<Producto> productos = FXCollections.observableArrayList(pedido.getProductos());
 

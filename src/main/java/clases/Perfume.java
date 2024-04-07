@@ -3,8 +3,8 @@ package clases;
 public class Perfume extends Producto {
     private int cantidad;
 
-    public Perfume(int idProducto, String tipoProducto, String nombre, int cantidad) {
-        super(idProducto, tipoProducto, nombre);
+    public Perfume(int id, String tipo, String nombre, int cantidad) {
+        super(id, tipo, nombre);
         this.cantidad = cantidad;
     }
 
@@ -15,14 +15,4 @@ public class Perfume extends Producto {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-    @Override
-public String toString() {
-    return "Perfume{" +
-            "idProducto=" + idProducto +
-            ", tipoProducto='" + tipoProducto + '\'' +
-            ", nombre='" + nombre + '\'' +
-            ", cantidad=" + cantidad +
-            '}';
-}
 }

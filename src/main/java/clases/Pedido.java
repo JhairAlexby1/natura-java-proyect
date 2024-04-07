@@ -3,10 +3,18 @@ package clases;
 import java.util.ArrayList;
 
 public class Pedido {
+    private static Pedido instance = null;
     private ArrayList<Producto> productos;
 
-    public Pedido() {
+    private Pedido() {
         this.productos = new ArrayList<>();
+    }
+
+    public static Pedido getInstance() {
+        if (instance == null) {
+            instance = new Pedido();
+        }
+        return instance;
     }
 
     public void agregarProducto(Producto producto) {

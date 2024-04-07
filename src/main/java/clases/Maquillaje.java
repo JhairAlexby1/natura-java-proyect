@@ -16,13 +16,5 @@ public class Maquillaje extends Producto {
         this.cantidad = cantidad;
     }
 
-    @Override
-public String toString() {
-    return "Perfume{" +
-            "idProducto=" + idProducto +
-            ", tipoProducto='" + tipoProducto + '\'' +
-            ", nombre='" + nombre + '\'' +
-            ", cantidad=" + cantidad +
-            '}';
-}
+
 }

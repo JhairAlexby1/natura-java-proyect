@@ -1,30 +1,31 @@
 package clases;
 
-public class Producto {
-    protected int idProducto;
-    protected String tipoProducto;
-    protected String nombre;
 
-    public Producto(int idProducto, String tipoProducto, String nombre) {
-        this.idProducto = idProducto;
-        this.tipoProducto = tipoProducto;
+public class Producto {
+    private Integer id;
+    private String tipo;
+    private String nombre;
+
+    public Producto(Integer id, String tipo, String nombre) {
+        this.id = id;
+        this.tipo = tipo;
         this.nombre = nombre;
     }
 
-    public int getIdProducto() {
-        return idProducto;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getTipoProducto() {
-        return tipoProducto;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoProducto(String tipoProducto) {
-        this.tipoProducto = tipoProducto;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -34,13 +35,4 @@ public class Producto {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    @Override
-public String toString() {
-    return "Producto{" +
-            "idProducto=" + idProducto +
-            ", tipoProducto='" + tipoProducto + '\'' +
-            ", nombre='" + nombre + '\'' +
-            '}';
-}
 }

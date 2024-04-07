@@ -30,37 +30,37 @@ public class vistaAgregarProductoController {
     private Pedido pedido;
 
     public vistaAgregarProductoController() {
-        this.pedido = new Pedido();
+        this.pedido = Pedido.getInstance();
     }
 
     @FXML
-    void agregarProducto(ActionEvent event) {
-        String tipo = tipoProducto.getValue();
-        String nombre = nombreProducto.getText();
-        int id = Integer.parseInt(idProducto.getText());
-        int cantidad = Integer.parseInt(cantidadProducto.getText());
+void agregarProducto(ActionEvent event) {
+    String tipo = tipoProducto.getValue();
+    String nombre = nombreProducto.getText();
+    int id = Integer.parseInt(idProducto.getText());
+    int cantidad = Integer.parseInt(cantidadProducto.getText());
 
-        Producto producto;
+    Producto producto;
 
-        switch (tipo) {
-            case "Perfume":
-                producto = new Perfume(id, tipo, nombre, cantidad);
-                break;
-            case "Maquillaje":
-                producto = new Maquillaje(id, tipo, nombre, cantidad);
-                break;
-            case "Joyeria":
-                producto = new Joyeria(id, tipo, nombre, cantidad);
-                break;
-            default:
-                producto = new Producto(id, tipo, nombre);
-        }
-
-        this.pedido.agregarProducto(producto);
-
-        // Imprimir los detalles del producto en la terminal
-        System.out.println("Producto agregado: " + producto.toString());
+    switch (tipo) {
+        case "Perfume":
+            producto = new Perfume(id, tipo, nombre, cantidad);
+            break;
+        case "Maquillaje":
+            producto = new Maquillaje(id, tipo, nombre, cantidad);
+            break;
+        case "Joyeria":
+            producto = new Joyeria(id, tipo, nombre, cantidad);
+            break;
+        default:
+            producto = new Producto(id, tipo, nombre);
     }
+
+    this.pedido.agregarProducto(producto);
+
+    // Imprimir los detalles del producto en la terminal
+    System.out.println("Producto agregado: " + producto.toString());
+}
 
     public void regresar(ActionEvent actionEvent) {
         try {
