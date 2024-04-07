@@ -1,5 +1,6 @@
 package controladores;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,9 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -18,6 +17,7 @@ import clases.Consultor;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class vistaEditarController {
 
@@ -39,6 +39,9 @@ public class vistaEditarController {
     private TableColumn<Consultor, String> colEmail;
     @FXML
     private Button btnRegresar;
+    @FXML
+    private TableColumn<Consultor, Consultor> colEliminar;
+
 
     @FXML
     public void initialize() { // esto inicializa todas los atributos para que se muestren en la tabla
@@ -65,6 +68,35 @@ public class vistaEditarController {
                 regresar(event);
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        });
+
+        colEliminar.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        colEliminar.setCellFactory(param -> new TableCell<Consultor, Consultor>() {
+            private final Button deleteButton = new Button("Eliminar");
+
+            @Override
+            protected void updateItem(Consultor consultor, boolean empty) {
+                super.updateItem(consultor, empty);
+
+                if (consultor == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                setGraphic(deleteButton);
+                deleteButton.setOnAction(event -> {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmación de eliminación");
+                    alert.setHeaderText("Estás a punto de eliminar un consultor");
+                    alert.setContentText("¿Estás seguro de que quieres continuar?");
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK){
+                        Consultor.eliminarConsultor(consultor);
+                        recargarTabla();
+                    }
+                });
             }
         });
     }

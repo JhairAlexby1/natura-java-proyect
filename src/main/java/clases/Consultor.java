@@ -109,6 +109,7 @@ public class Consultor {
 }
 
     @Override
+    // metodo para imprimir los datos del consultor en terminal
     public String toString() {
         return "Consultor{" +
                 "id='" + id + '\'' +
@@ -129,6 +130,12 @@ public class Consultor {
         }
     }
 }
+
+
+        public static void eliminarConsultor(Consultor consultor) {
+            consultores.remove(consultor);
+        }
+
 
 
 }
