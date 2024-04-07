@@ -8,7 +8,8 @@ public class Joyeria extends Producto {
         this.cantidad = cantidad;
     }
 
-    public int getCantidad() {
+    @Override
+    public Integer getCantidad() {
         return cantidad;
     }
 
@@ -16,5 +17,13 @@ public class Joyeria extends Producto {
         this.cantidad = cantidad;
     }
 
-
+    @Override
+    public String toString() {
+        return "Perfume{" +
+                "id=" + getId() +
+                ", tipo='" + getTipo() + '\'' +
+                ", nombre='" + getNombre() + '\'' +
+                ", cantidad=" + cantidad +
+                '}';
+    }
 }

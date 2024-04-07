@@ -1,6 +1,5 @@
 package clases;
 
-
 public class Producto {
     private Integer id;
     private String tipo;
@@ -34,5 +33,18 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Integer getCantidad() {
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", tipo='" + tipo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }
