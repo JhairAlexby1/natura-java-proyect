@@ -14,6 +14,6 @@ public class Pedido {
     }
 
     public ArrayList<Producto> getProductos() {
-        return this.productos;
+        return productos;
     }
 }

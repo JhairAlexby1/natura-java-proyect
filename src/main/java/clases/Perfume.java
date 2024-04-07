@@ -1,9 +1,9 @@
 package clases;
 
-public class Joyeria extends Producto {
+public class Perfume extends Producto {
     private int cantidad;
 
-    public Joyeria(int idProducto, String tipoProducto, String nombre, int cantidad) {
+    public Perfume(int idProducto, String tipoProducto, String nombre, int cantidad) {
         super(idProducto, tipoProducto, nombre);
         this.cantidad = cantidad;
     }
