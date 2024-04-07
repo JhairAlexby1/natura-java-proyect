@@ -46,7 +46,17 @@ void btnRegresar(ActionEvent event) {
 
     @FXML
     void verProductos(ActionEvent event) {
-        System.out.println("Viendo productos");
+        try {
+            // Cargar el archivo FXML
+            Parent root = FXMLLoader.load(getClass().getResource("/vistas/vistaVerProductos.fxml"));
+
+            // Obtener el escenario actual y establecer la nueva escena
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
