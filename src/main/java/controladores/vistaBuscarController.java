@@ -72,22 +72,31 @@ public class vistaBuscarController {
         }
     }
 
-  @FXML
+@FXML
 void buscarConsultor(ActionEvent event) {
-    String searchTerm = searchField.getText().trim();
+    String searchTerm = searchField.getText().trim().toLowerCase();
     if (searchTerm.isEmpty()) {
         return;
     }
 
     ObservableList<Consultor> results = FXCollections.observableArrayList();
     for (Consultor consultor : Consultor.getConsultores()) {
-        if (consultor.getNombre().equalsIgnoreCase(searchTerm) || consultor.getId().equals(searchTerm)) {
+        String fullName = (consultor.getNombre() + " " + consultor.getApellidoPaterno() + " " + consultor.getApellidoMaterno()).toLowerCase();
+        if (fullName.contains(searchTerm) || consultor.getId().equals(searchTerm)) {
             results.add(consultor);
+        } else {
+            // essto sirve para buscar cada palabra del término de búsqueda en el nombre completo del consultor, o busca un aproximado
+            String[] searchWords = searchTerm.split(" ");
+            for (String word : searchWords) {
+                if (fullName.contains(word)) {
+                    results.add(consultor);
+                    break;
+                }
+            }
         }
     }
 
-    if (results.isEmpty()) {
-    } else {
+    if (!results.isEmpty()) {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colApellidoPaterno.setCellValueFactory(new PropertyValueFactory<>("apellidoPaterno"));
