@@ -42,6 +42,10 @@ public class vistaEditarConsultorController {
 @FXML
 // Método para guardar los cambios en el consultor
 public void initialize() {
+    txtId.setEditable(false); // esto es para que no se pueda editar el id, es un dato que no se debe de tocar :v
+
+
+
     btnGuardar.setOnAction(event -> {
         consultor.setId(txtId.getText());
         consultor.setNombre(txtNombre.getText());

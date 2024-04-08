@@ -45,7 +45,17 @@ public class vistaFormularioController {
 
     @FXML
     //esto sirve para que los campos de texto solo acepten letras y no números, para que no haya errores al ingresar datos
+    // el initialize es un método que sirve para inicializar los componentes de la vista, osea que los datos que ingrese el usuario se guarden
+    // tambien aqui va la mayoria de la lógica de la vista, tambien las restricciones de los campos de texto
     public void initialize() {
+        id.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Solo aceptar números en el campo de ID
+        if (!newValue.matches("\\d*")) {
+            id.setText(newValue.replaceAll("[^\\d]", ""));
+        }
+            });
+
+
         nombre.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\D*")) {
                 nombre.setText(newValue.replaceAll("[^\\D]", ""));
@@ -69,8 +79,19 @@ public class vistaFormularioController {
                 telefonoField.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
-    }
 
+        passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 12) { // Limitar a solo 12  la contraseña
+                passwordField.setText(oldValue);
+            }
+        });
+
+        confirmPasswordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 12) { // Limitar a solo 12  la contraseña
+                confirmPasswordField.setText(oldValue);
+            }
+        });
+}
     // esto sirve para mostrar una alerta en caso de que haya campos vacíos
     private void showAlert(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
