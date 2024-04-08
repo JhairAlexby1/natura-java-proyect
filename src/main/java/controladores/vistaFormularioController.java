@@ -89,7 +89,7 @@ void btnAgregar(ActionEvent event) {
     String emailConsultor = emailField.getText();
     String passwordConsultor = passwordField.getText();
     String telefonoConsultor = telefonoField.getText();
-    String direccionConsultor = direccionField.getText(); // Obtener la dirección del campo de texto
+    String direccionConsultor = direccionField.getText();
 
     if (idConsultor.isEmpty() || nombreConsultor.isEmpty() || apellidoPaternoConsultor.isEmpty() || apellidoMaternoConsultor.isEmpty() || emailConsultor.isEmpty() || passwordConsultor.isEmpty() || telefonoConsultor.isEmpty() || direccionConsultor.isEmpty()) {
         showAlert("Campos vacíos", "Por favor, llena todos los campos", "Todos los campos deben estar llenos para continuar.");
@@ -107,14 +107,26 @@ void btnAgregar(ActionEvent event) {
             showAlert("ID ya existe", "Por favor, ingresa un ID diferente", "El ID ingresado ya existe en la base de datos.");
             return;
         }
+        if (consultor.getTelefono().equals(telefonoConsultor)) {
+            showAlert("Teléfono ya existe", "Por favor, ingresa un teléfono diferente", "El teléfono ingresado ya existe en la base de datos.");
+            return;
+        }
+        if (consultor.getEmail().equals(emailConsultor)) {
+            showAlert("Correo electrónico ya existe", "Por favor, ingresa un correo electrónico diferente", "El correo electrónico ingresado ya existe en la base de datos.");
+            return;
+        }
     }
 
     Consultor nuevoConsultor = new Consultor(idConsultor, nombreConsultor, apellidoPaternoConsultor, apellidoMaternoConsultor, telefonoConsultor, direccionConsultor, emailConsultor, passwordConsultor); // Pasar la dirección al constructor
 
     System.out.println(Consultor.getConsultores());
 
+    showAlert("Consultor agregado", "El consultor se ha agregado con éxito", "Consultor: " + nuevoConsultor.toString());
+
     System.out.println("Consultor agregado");
 }
+
+
     @FXML
     void btnRegresar(ActionEvent event) {
         try {
