@@ -15,7 +15,7 @@
 
     <TableView fx:id="resultsTable" layoutY="79.0" prefHeight="243.0" prefWidth="580.0" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="79.0">
         <columns>
-            <TableColumn fx:id="colId" text="ID" />
+            <TableColumn fx:id="colId" text="Codigo" />
             <TableColumn fx:id="colNombre" text="Nombre" />
             <TableColumn fx:id="colApellidoPaterno" text="Apellido Paterno" />
             <TableColumn fx:id="colApellidoMaterno" text="Apellido Materno" />

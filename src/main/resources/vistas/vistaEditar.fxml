@@ -11,7 +11,7 @@
    <children>
       <TableView fx:id="tablaRegistro" prefHeight="320.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="61.00000250339508" text="ID" />
+          <TableColumn fx:id="colId" prefWidth="61.00000250339508" text="Codigo" />
           <TableColumn fx:id="colNombre" prefWidth="102.99999237060547" text="Nombre" />
           <TableColumn fx:id="colApellidoPaterno" prefWidth="95.33331298828125" text="Apellido Paterno" />
           <TableColumn fx:id="colApellidoMaterno" prefWidth="75.0" text="Apellido Materno" />

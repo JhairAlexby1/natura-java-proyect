@@ -91,6 +91,26 @@ public class vistaFormularioController {
                 confirmPasswordField.setText(oldValue);
             }
         });
+
+        id.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                id.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+            if (newValue.length() > 8) { // Limitar a solo 8 caracteres el ID
+                id.setText(oldValue);
+            }
+        });
+
+
+        emailField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+    if (!newValue) { // esto no permitira que se avance si no ingresamos un correo vario
+        String regex = "^[\\w-]+(\\.[\\w-]+)*@[\\w-]+(\\.[\\w-]+)*(\\.[a-zA-Z]{2,})$";
+        if (!emailField.getText().matches(regex)) {
+            showAlert("Formato de correo electrónico inválido", "Por favor, ingresa un correo electrónico válido", "El correo electrónico ingresado no tiene un formato válido.");
+            emailField.requestFocus();
+        }
+    }
+});
 }
     // esto sirve para mostrar una alerta en caso de que haya campos vacíos
     private void showAlert(String title, String header, String content) {
