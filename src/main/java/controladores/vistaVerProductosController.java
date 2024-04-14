@@ -39,11 +39,17 @@ public class vistaVerProductosController {
     @FXML
     private TableColumn<Producto, Producto> columnaEliminar;
 
+    @FXML
+    private TableColumn<Producto, String> columnaConsultor;
+
+
     public void initialize() {
+        columnaConsultor.setCellValueFactory(new PropertyValueFactory<>("consultor"));
         columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnaTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        columnaConsultor.setCellValueFactory(new PropertyValueFactory<>("consultorNombre"));
 
         columnaEliminar.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         columnaEliminar.setCellFactory(param -> new TableCell<>() {

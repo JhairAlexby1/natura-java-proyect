@@ -41,6 +41,10 @@ public class Producto {
         return null;
     }
 
+    public String getConsultorNombre() {
+    return this.consultor.getNombre();
+}
+
     public void setConsultor(Consultor consultor) {
         this.consultor = consultor;
     }

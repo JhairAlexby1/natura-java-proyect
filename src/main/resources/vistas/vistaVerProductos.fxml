@@ -31,7 +31,12 @@
                     <PropertyValueFactory property="tipo" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="columnaEliminar" minWidth="0.0" prefWidth="197.00003051757812">
+            <TableColumn fx:id="columnaConsultor" minWidth="0.0" prefWidth="198.0" text="Nombre de quien hizo el pedido">
+    <cellValueFactory>
+        <PropertyValueFactory property="consultor" />
+    </cellValueFactory>
+</TableColumn>
+            <TableColumn fx:id="columnaEliminar" minWidth="0.0" prefWidth="79.33331298828125">
                 <cellValueFactory>
                     <PropertyValueFactory property="eliminar" />
                 </cellValueFactory>
