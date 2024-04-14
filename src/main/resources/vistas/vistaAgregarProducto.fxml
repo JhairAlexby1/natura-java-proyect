@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<?import java.net.URL?>
 
-<?import javafx.geometry.Insets?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controladores.vistaAgregarProductoController" prefWidth="600" prefHeight="400" spacing="20" alignment="CENTER">
+<VBox alignment="CENTER" prefHeight="400" prefWidth="600" spacing="20" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="controladores.vistaAgregarProductoController">
     <stylesheets>
         <URL value="@../styles/stylesBotones.css" />
     </stylesheets>
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
-    <Label text="Agregar Producto" style="-fx-font-weight: bold; -fx-font-size: 18px;" />
+    <Label style="-fx-font-weight: bold; -fx-font-size: 18px;" text="Agregar Producto" />
     <HBox spacing="10">
-        <ComboBox fx:id="tipoProducto" promptText="Seleccione el tipo de producto" prefWidth="200">
+
+        <ComboBox fx:id="tipoProducto" prefWidth="200" promptText="Seleccione el tipo de producto">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="Maquillaje" />
@@ -24,10 +26,12 @@
                 </FXCollections>
             </items>
         </ComboBox>
-        <TextField fx:id="nombreProducto" promptText="Nombre del producto" prefWidth="200" />
-        <TextField fx:id="idProducto" promptText="ID del producto" prefWidth="100" />
-        <TextField fx:id="cantidadProducto" promptText="Cantidad del producto" prefWidth="100" />
+
+        <TextField fx:id="nombreProducto" prefWidth="200" promptText="Nombre del producto" />
+        <TextField fx:id="idProducto" prefWidth="100" promptText="ID del producto" />
+        <TextField fx:id="cantidadProducto" prefWidth="100" promptText="Cantidad del producto" />
     </HBox>
-    <Button text="Agregar" onAction="#agregarProducto" prefWidth="150" styleClass="button" />
-    <Button text="Regresar" onAction="#regresar" prefWidth="150" styleClass="button" />
+     <ComboBox fx:id="consultorProducto" />
+    <Button onAction="#agregarProducto" prefWidth="150" styleClass="button" text="Agregar" />
+    <Button onAction="#regresar" prefWidth="150" styleClass="button" text="Regresar" />
 </VBox>

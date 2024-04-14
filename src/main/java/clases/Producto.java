@@ -4,6 +4,8 @@ public class Producto {
     private Integer id;
     private String tipo;
     private String nombre;
+    private Consultor consultor;
+
 
     public Producto(Integer id, String tipo, String nombre) {
         this.id = id;
@@ -37,6 +39,14 @@ public class Producto {
 
     public Integer getCantidad() {
         return null;
+    }
+
+    public void setConsultor(Consultor consultor) {
+        this.consultor = consultor;
+    }
+
+    public Consultor getConsultor() {
+        return this.consultor;
     }
 
     @Override

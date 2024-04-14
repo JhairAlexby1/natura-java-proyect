@@ -28,6 +28,15 @@ public class Consultor {
 
     }
 
+    public static Consultor getConsultorPorNombre(String nombre) {
+    for (Consultor consultor : consultores) {
+        if (consultor.getNombre().equals(nombre)) {
+            return consultor;
+        }
+    }
+    return null;
+}
+
     public static ArrayList<Consultor> getConsultores() {
         return consultores;
     }

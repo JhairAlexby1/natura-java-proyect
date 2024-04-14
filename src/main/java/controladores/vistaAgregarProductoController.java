@@ -30,12 +30,20 @@ public class vistaAgregarProductoController {
 
     private Pedido pedido;
 
+    @FXML
+    private ComboBox<String> consultorProducto;
+
     public vistaAgregarProductoController() {
         this.pedido = Pedido.getInstance();
     }
 
     @FXML
     public void initialize() {
+
+        for (Consultor consultor : Consultor.getConsultores()) {
+            consultorProducto.getItems().add(consultor.getNombre());
+        }
+
         idProducto.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 idProducto.setText(newValue.replaceAll("[^\\d]", ""));
@@ -58,7 +66,7 @@ public class vistaAgregarProductoController {
         alert.showAndWait();
     }
 
-    @FXML
+@FXML
 void agregarProducto(ActionEvent event) {
     String tipo = tipoProducto.getValue();
     String nombre = nombreProducto.getText();
@@ -98,6 +106,20 @@ void agregarProducto(ActionEvent event) {
         default:
             producto = new Producto(id, tipo, nombre);
     }
+
+    String consultorNombre = consultorProducto.getValue();
+    if (consultorNombre == null) {
+        showAlert("Consultor no seleccionado", "Por favor, selecciona un consultor", "Debes seleccionar un consultor para agregar un producto.");
+        return;
+    }
+
+    Consultor consultor = Consultor.getConsultorPorNombre(consultorNombre);
+    if (consultor == null) {
+        showAlert("Consultor no encontrado", "Por favor, selecciona un consultor válido", "El consultor seleccionado no se encuentra en la base de datos.");
+        return;
+    }
+
+    producto.setConsultor(consultor);
 
     this.pedido.agregarProducto(producto);
 
