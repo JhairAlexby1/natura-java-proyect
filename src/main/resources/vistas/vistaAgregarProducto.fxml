@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="400" prefWidth="600" spacing="20" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="controladores.vistaAgregarProductoController">
+<VBox alignment="CENTER" prefHeight="400" prefWidth="600" spacing="20" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.vistaAgregarProductoController">
     <stylesheets>
         <URL value="@../styles/stylesBotones.css" />
     </stylesheets>
@@ -31,7 +31,7 @@
         <TextField fx:id="idProducto" prefWidth="100" promptText="ID del producto" />
         <TextField fx:id="cantidadProducto" prefWidth="100" promptText="Cantidad del producto" />
     </HBox>
-     <ComboBox fx:id="consultorProducto" />
+     <ComboBox fx:id="consultorProducto" prefHeight="25.0" prefWidth="151.0" promptText="Seleccione al consultor" />
     <Button onAction="#agregarProducto" prefWidth="150" styleClass="button" text="Agregar" />
     <Button onAction="#regresar" prefWidth="150" styleClass="button" text="Regresar" />
 </VBox>
